@@ -5,34 +5,17 @@ function formatString(input: string, toUpper?: boolean): string {
     return input.toUpperCase();
 }
 
-// console.log(formatString("Hello"));          // Output: "HELLO"
-// console.log(formatString("Hello", true));   // Output: "HELLO"
-// console.log(formatString("Hello", false));  // Output: "hello"
-
-
 function filterByRating(items: { title: string; rating: number }[]): { title: string; rating: number }[] {
     return items.filter((item: { title: string; rating: number }) => item.rating >= 4);
 }
 
-// const books = [
-//     { title: "Book A", rating: 4.5 },
-//     { title: "Book B", rating: 3.2 },
-//     { title: "Book C", rating: 5.0 }
-// ];
-
-// console.log(filterByRating(books));
-// Output: [ { title: "Book A", rating: 4.5 }, { title: "Book C", rating: 5.0 } ]
-
 function concatenateArrays<T>(...arrays: T[][]): T[] {
     const newArr: T[] = [];
-    arrays.forEach(arr => {
+    arrays.forEach((arr: T[]) => {
         newArr.push(...arr);
     })
     return newArr;
 }
-
-// console.log(concatenateArrays<string>(["a", "b"], ["c"]));      // Output: ["a", "b", "c"]
-// console.log(concatenateArrays<number>([1, 2], [3, 4], [5]));     // Output: [1, 2, 3, 4, 5]
 
 class Vehicle {
     constructor(private make: string, private year: number) { }
@@ -40,7 +23,6 @@ class Vehicle {
         console.log(`Make: ${this.make}, Year: ${this.year}`);
     }
 }
-
 class Car extends Vehicle {
     constructor(make: string, year: number, private model: string) {
         super(make, year);
@@ -50,23 +32,15 @@ class Car extends Vehicle {
     }
 }
 
-// const myCar = new Car("Toyota", 2020, "Corolla");
-// myCar.getInfo();   // Output: "Make: Toyota, Year: 2020"
-// myCar.getModel();  // Output: "Model: Corolla"
-
 function processValue(value: string | number): number {
     if (typeof value === 'string') return value.length;
     return value * 2;
 }
 
-// console.log(processValue("hello")); // Output: 5
-// console.log(processValue(10));    // Output: 20
-
 interface Product {
     name: string;
     price: number;
 }
-
 function getMostExpensiveProduct(products: Product[]): Product | null {
     if (!products.length) return null;
     let mostExpensiveProduct: Product = products[0];
@@ -78,15 +52,6 @@ function getMostExpensiveProduct(products: Product[]): Product | null {
     return mostExpensiveProduct;
 }
 
-// const products = [
-//     { name: "Pen", price: 10 },
-//     { name: "Notebook", price: 25 },
-//     { name: "Bag", price: 50 }
-// ];
-
-// console.log(getMostExpensiveProduct(products));
-// // Output: { name: "Bag", price: 50 }
-
 enum Day {
     Monday,
     Tuesday,
@@ -96,14 +61,10 @@ enum Day {
     Saturday,
     Sunday
 }
-
 function getDayType(day: Day): string {
     if (day === Day.Sunday) return "Weekend";
     return "Weekday";
 }
-
-// console.log(getDayType(Day.Monday));   // Output: "Weekday"
-// console.log(getDayType(Day.Sunday));   // Output: "Weekend"
 
 async function squareAsync(n: number): Promise<number> {
     return new Promise((resolve, reject) => {
@@ -116,6 +77,3 @@ async function squareAsync(n: number): Promise<number> {
         }
     })
 }
-
-// squareAsync(4).then(console.log);        // Output after 1s: 16
-// squareAsync(-3).catch(console.error);    // Output: Error: Negative number not allowed
