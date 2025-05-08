@@ -11,7 +11,7 @@ function formatString(input: string, toUpper?: boolean): string {
 
 
 function filterByRating(items: { title: string; rating: number }[]): { title: string; rating: number }[] {
-    return items.filter(item => item.rating >= 4);
+    return items.filter((item: { title: string; rating: number }) => item.rating >= 4);
 }
 
 // const books = [
@@ -62,3 +62,27 @@ function processValue(value: string | number): number {
 // console.log(processValue("hello")); // Output: 5
 // console.log(processValue(10));    // Output: 20
 
+interface Product {
+    name: string;
+    price: number;
+}
+
+function getMostExpensiveProduct(products: Product[]): Product | null {
+    if (!products.length) return null;
+    let mostExpensiveProduct: Product = products[0];
+    products.slice(1, products.length).forEach((product: Product) => {
+        if (product.price > mostExpensiveProduct.price) {
+            mostExpensiveProduct = product;
+        }
+    })
+    return mostExpensiveProduct;
+}
+
+// const products = [
+//     { name: "Pen", price: 10 },
+//     { name: "Notebook", price: 25 },
+//     { name: "Bag", price: 50 }
+// ];
+
+// console.log(getMostExpensiveProduct(products));
+// // Output: { name: "Bag", price: 50 }
