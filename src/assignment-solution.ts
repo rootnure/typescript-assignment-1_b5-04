@@ -59,6 +59,6 @@ function processValue(value: string | number): number {
     return value * 2;
 }
 
-console.log(processValue("hello")); // Output: 5
-console.log(processValue(10));    // Output: 20
+// console.log(processValue("hello")); // Output: 5
+// console.log(processValue(10));    // Output: 20
 
